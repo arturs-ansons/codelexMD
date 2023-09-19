@@ -2,11 +2,10 @@
 
 function CheckOddEven($number) {
     if ($number % 2 == 0) {
-        echo "Even Number\n";
+        return true;
     } else {
-        echo "Odd Number\n";
+        return false;
     }
-    echo "bye!\n";
 }
 
 $number = 7;
