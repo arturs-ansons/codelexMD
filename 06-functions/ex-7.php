@@ -19,7 +19,8 @@ $person2->cash = 150;
 
 $per = [$person, $person2];
 
-function canBuyGun($person, $gun) {
+function canBuyGun($person, $gun): bool
+{
     if (in_array($gun["license"], $person->licenses) && $person->cash >= $gun["price"]) {
             return true;
         }
