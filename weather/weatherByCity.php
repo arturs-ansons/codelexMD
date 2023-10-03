@@ -2,7 +2,7 @@
 
 function getData($city)
 {
-    $apiKey = "0c1725f72d445b2b377c34209ba1341c";
+    $apiKey = "";
     $url = "https://api.openweathermap.org/data/2.5/forecast?q=$city&appid=$apiKey";
 
     extracted($url);
