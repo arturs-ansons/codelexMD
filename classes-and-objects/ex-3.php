@@ -43,13 +43,13 @@ class Odometer {
 
         $this->currentMileage += 10;
 
-        if ($this->currentMileage > 999999) {
+        if ($this->currentMileage > 999) {
             $this->currentMileage = 0;
         }
 
     }
     public function drive(FuelGauge $fuelGauge): void {
-        
+
         $this->incrementMileage();
 
         $fuelGauge->decrementFuel(1);
@@ -61,10 +61,16 @@ $fuelGauge = new FuelGauge();
 $odometer = new Odometer();
 
 while ($fuelGauge->getCurrentFuel() >= 1) {
-
     $odometer->drive($fuelGauge);
     echo "Distance: " . $odometer->getCurrentMileage() . " km, Fuel: " . $fuelGauge->getCurrentFuel() . " liters\n";
 
+    if ($fuelGauge->getCurrentFuel() == 0) {
+        $fuelGauge->incrementFuel(70);
+        echo "Fuel after adding more: " . $fuelGauge->getCurrentFuel() . " liters\n";
+    }
+    if($odometer->getCurrentMileage() === 0){
+        break;
+    }
 }
-$fuelGauge->incrementFuel(70);
-echo "Fuel after adding more: " . $fuelGauge->getCurrentFuel() . " liters\n";
+
+
