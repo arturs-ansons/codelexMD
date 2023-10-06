@@ -74,4 +74,4 @@ while ($fuelGauge->getCurrentFuel() >= 1) {
     }
 }
 
-echo "You exceed your Odo, by new car!";
+echo "You exceed your Odo, buy a new car!";
