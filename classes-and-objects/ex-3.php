@@ -13,22 +13,15 @@ class FuelGauge {
         return $this->currentFuel;
     }
 
-    public function incrementFuel($amount) {
+    public function incrementFuel(int $amount): void {
 
-        if ($this->currentFuel + $amount) {
-            $this->currentFuel += $amount;
-        } else {
-            $this->currentFuel = 70; // Limit fuel to the maximum capacity (70 liters)
-        }
+        $this->currentFuel += $amount;
+
     }
 
-    public function decrementFuel($amount) {
+    public function decrementFuel(int $amount): void {
 
-        if ($this->currentFuel >= $amount) {
             $this->currentFuel -= $amount;
-        } else {
-            $this->currentFuel = 0;
-        }
     }
 }
 
@@ -45,23 +38,24 @@ class Odometer {
         return $this->currentMileage;
     }
 
-    public function incrementMileage() {
+    public function incrementMileage(): void
+    {
 
-        $this->currentMileage+= 10;
+        $this->currentMileage += 10;
 
         if ($this->currentMileage > 999999) {
-            $this->currentMileage = 0; // Reset when mileage exceeds 999,999
+            $this->currentMileage = 0;
         }
+
     }
+    public function drive(FuelGauge $fuelGauge): void {
 
-    public function drive(FuelGauge $fuelGauge) {
-        if ($fuelGauge->getCurrentFuel()) {
+        $fuelGauge->getCurrentFuel();
 
-            $this->incrementMileage();
-            $fuelGauge->decrementFuel(1); // Decrease fuel by 1 liter for every 10 kilometers
-        } else {
-            echo "Out of fuel!\n";
-        }
+        $this->incrementMileage();
+
+        $fuelGauge->decrementFuel(1);
+
     }
 }
 
