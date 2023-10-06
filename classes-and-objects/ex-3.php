@@ -78,7 +78,7 @@ class Simulation {
             }
         }
 
-        echo "You exceed your Odo, buy a new car!";
+          echo "You have exceeded your Odo, buy a new car!";
     }
 }
 
