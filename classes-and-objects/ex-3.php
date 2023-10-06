@@ -64,6 +64,7 @@ while ($fuelGauge->getCurrentFuel() >= 1) {
     $odometer->drive($fuelGauge);
     echo "Distance: " . $odometer->getCurrentMileage() . " km, Fuel: " . $fuelGauge->getCurrentFuel() . " liters\n";
 
+    /** @var TYPE_NAME $fuelGauge */
     if ($fuelGauge->getCurrentFuel() == 0) {
         $fuelGauge->incrementFuel(70);
         echo "Fuel after adding more: " . $fuelGauge->getCurrentFuel() . " liters\n";
