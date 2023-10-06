@@ -49,9 +49,7 @@ class Odometer {
 
     }
     public function drive(FuelGauge $fuelGauge): void {
-
-        $fuelGauge->getCurrentFuel();
-
+        
         $this->incrementMileage();
 
         $fuelGauge->decrementFuel(1);
