@@ -2,7 +2,7 @@
 
 function getData($city)
 {
-    $apiKey = "";
+    $apiKey = "0c1725f72d445b2b377c34209ba1341c";
     $url = "https://api.openweathermap.org/data/2.5/forecast?q=$city&appid=$apiKey";
 
     extracted($url);
@@ -30,15 +30,15 @@ function extracted(string $url): void
         $weatherId = $weather->id;
 
         if ($weatherId >= 200 && $weatherId < 300) {
-            echo "Laiks: Vētra\n";
+            echo "Laiks: Thunderstorm\n";
         } elseif ($weatherId >= 300 && $weatherId < 400) {
-            echo "Laiks: Krusa\n";
+            echo "Laiks: Drizzle\n";
         } elseif ($weatherId >= 500 && $weatherId < 600) {
-            echo "Laiks: Lietus\n";
+            echo "Laiks: Rain\n";
         } elseif ($weatherId >= 600 && $weatherId < 700) {
-            echo "Laiks: Sniegs\n";
+            echo "Laiks: Snow\n";
         } elseif ($weatherId >= 700 && $weatherId < 800) {
-            echo "Laiks: Spiediens\n";
+            echo "Laiks: Atmosphere\n";
         } elseif ($weatherId === 800) {
             echo "Laiks: Skaidrs\n";
         } elseif ($weatherId >= 801 && $weatherId < 900) {

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 class Movie {
     private string $title;
@@ -26,7 +26,8 @@ class Movie {
         return $this->rating;
     }
 
-    public static function GetPG($movies) {
+    public static function GetPG($movies): array
+    {
         $pgMovies = [];
         foreach ($movies as $movie) {
             if ($movie->getRating() === "PG") {

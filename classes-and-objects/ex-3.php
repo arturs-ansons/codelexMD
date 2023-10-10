@@ -13,22 +13,15 @@ class FuelGauge {
         return $this->currentFuel;
     }
 
-    public function incrementFuel($amount) {
+    public function incrementFuel(int $amount): void {
 
-        if ($this->currentFuel + $amount) {
-            $this->currentFuel += $amount;
-        } else {
-            $this->currentFuel = 70; // Limit fuel to the maximum capacity (70 liters)
-        }
+        $this->currentFuel += $amount;
+
     }
 
-    public function decrementFuel($amount) {
+    public function decrementFuel(int $amount): void {
 
-        if ($this->currentFuel >= $amount) {
             $this->currentFuel -= $amount;
-        } else {
-            $this->currentFuel = 0;
-        }
     }
 }
 
@@ -45,34 +38,50 @@ class Odometer {
         return $this->currentMileage;
     }
 
-    public function incrementMileage() {
+    public function incrementMileage(): void
+    {
 
-        $this->currentMileage+= 10;
+        $this->currentMileage += 10;
 
-        if ($this->currentMileage > 999999) {
-            $this->currentMileage = 0; // Reset when mileage exceeds 999,999
+        if ($this->currentMileage > 999) {
+            $this->currentMileage = 0;
         }
+
     }
+    public function drive(FuelGauge $fuelGauge): void {
 
-    public function drive(FuelGauge $fuelGauge) {
-        if ($fuelGauge->getCurrentFuel()) {
+        $this->incrementMileage();
 
-            $this->incrementMileage();
-            $fuelGauge->decrementFuel(1); // Decrease fuel by 1 liter for every 10 kilometers
-        } else {
-            echo "Out of fuel!\n";
-        }
+        $fuelGauge->decrementFuel(1);
+
     }
 }
 
-$fuelGauge = new FuelGauge();
-$odometer = new Odometer();
+class Simulation {
 
-while ($fuelGauge->getCurrentFuel() >= 1) {
+    public function simulateRide():void {
 
-    $odometer->drive($fuelGauge);
-    echo "Distance: " . $odometer->getCurrentMileage() . " km, Fuel: " . $fuelGauge->getCurrentFuel() . " liters\n";
+        $fuelGauge = new FuelGauge();
+        $odometer = new Odometer();
 
+        while ($fuelGauge->getCurrentFuel() >= 1) {
+            $odometer->drive($fuelGauge);
+            echo "Distance: " . $odometer->getCurrentMileage() . " km, Fuel: " . $fuelGauge->getCurrentFuel() . " liters\n";
+
+            if ($fuelGauge->getCurrentFuel() == 0) {
+                $fuelGauge->incrementFuel(70);
+                echo "Fuel after adding more: " . $fuelGauge->getCurrentFuel() . " liters\n";
+            }
+
+            if ($odometer->getCurrentMileage() === 0) {
+                break;
+            }
+        }
+
+        echo "You have exceeded your Odo, buy a new car!";
+    }
 }
-$fuelGauge->incrementFuel(70);
-echo "Fuel after adding more: " . $fuelGauge->getCurrentFuel() . " liters\n";
+
+$simulation = new Simulation();
+$simulation->simulateRide();
+

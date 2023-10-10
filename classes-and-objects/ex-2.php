@@ -1,5 +1,6 @@
 <?php
 class Point {
+
     private int $num1;
     private int $num2;
 

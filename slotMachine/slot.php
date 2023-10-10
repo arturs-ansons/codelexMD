@@ -59,30 +59,44 @@ while ($userCash >= 1) { // Require at least $10 to play each spin
     }
 
     // Call the function to display the board
-    displayBoard($board);
+   displayBoard($board);
 
     // Check for a win based on the first row
     $firstRow = $board[0];
     $secondRow = $board[1];
-    $winningCount = 0;
+    $winningCountFirstRow = 0;
+    $winningCountSecondRow = 0;
 
+// Check the first row for winning elements
     foreach ($firstRow as $element) {
         if ($element === $firstRow[0]) {
-            $winningCount++;
-        }else {
-            break; // If a different letter is encountered, stop checking
+            $winningCountFirstRow++;
+        } else {
+            break; // If a different letter is encountered, stop checking the first row
         }
     }
 
+// Check the second row for winning elements
+    foreach ($secondRow as $element) {
+        if ($element === $secondRow[0]) {
+            $winningCountSecondRow++;
+        } else {
+            break; // If a different letter is encountered, stop checking the second row
+        }
+    }
+
+// Total winning count is the sum of counts from both rows
+    $winningCount = max($winningCountFirstRow, $winningCountSecondRow);
+
     if ($winningCount >= 4) {
         echo "You win 2000$$$. Your cash: $$userCash\n";
-        $userCash += 2000;
+        $userCash = (2000 * $ticketCost * $ticketsToBuy) / 5;
     } elseif ($winningCount >= 3) {
         echo "You win 600$$$. Your cash: $$userCash\n";
-        $userCash += 600;
+        $userCash = (600 * $ticketCost * $ticketsToBuy) / 5;
     } elseif ($winningCount >= 2) {
         echo "You win 100$$$. Your cash: $$userCash\n";
-        $userCash += 100;
+        $userCash = (100 * $ticketCost * $ticketsToBuy) / 5;
     } else {
         echo "Your cash: $$userCash\n";
     }
