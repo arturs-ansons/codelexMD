@@ -79,8 +79,8 @@ class VideoStore
                     $isRented = $video['isRented'];
                     $name = $video['name'];
                     $rating = $video['rating'];
-print_r($this->movies);
                     $this->movies[] = new Video($title, $isRented, $name, $rating);
+                    print_r($this->movies);
                 }
 
                 echo "Inventory loaded from JSON file.\n";
