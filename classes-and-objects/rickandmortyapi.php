@@ -5,7 +5,7 @@ class Application
     public function run()
     {
         $videoStore = new VideoStore();
-        //$videoStore->get_movies();
+        $videoStore->get_movies();
         while (true) {
             echo "Choose the operation you want to perform\n";
             echo "Choose 0 for EXIT\n";
