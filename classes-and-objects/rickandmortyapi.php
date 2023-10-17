@@ -5,7 +5,7 @@ class Application
     public function run()
     {
         $videoStore = new VideoStore();
-        //$videoStore->get_movies();
+        $videoStore->get_movies();
         while (true) {
             echo "Choose the operation you want to perform\n";
             echo "Choose 0 for EXIT\n";
@@ -65,7 +65,7 @@ class VideoStore
         $this->inventoryFile = __DIR__ . DIRECTORY_SEPARATOR . 'inventory.json';
     }
 
-    public function loadInventory()
+    public function loadInventory(): void
     {
         if (file_exists($this->inventoryFile)) {
             $json = file_get_contents($this->inventoryFile);
@@ -79,8 +79,8 @@ class VideoStore
                     $isRented = $video['isRented'];
                     $name = $video['name'];
                     $rating = $video['rating'];
-
                     $this->movies[] = new Video($title, $isRented, $name, $rating);
+                    print_r($this->movies);
                 }
 
                 echo "Inventory loaded from JSON file.\n";
@@ -93,7 +93,7 @@ class VideoStore
         }
     }
 
-    public function saveInventory()
+    public function saveInventory(): void
     {
         if (empty($this->movies)) {
             echo "Inventory is empty. Nothing to save.\n";
@@ -115,7 +115,7 @@ class VideoStore
         }
     }
 
-    public function get_movies()
+    public function get_movies(): void
     {
         $json = file_get_contents("https://rickandmortyapi.com/api/episode");
         $data = json_decode($json);
@@ -139,7 +139,7 @@ class VideoStore
         }
     }
 
-    public function rent_video($title)
+    public function rent_video($title): void
     {
         $movieFound = false;
         /** @var Video $movie
@@ -162,7 +162,7 @@ class VideoStore
         }
     }
 
-    public function return_video($title)
+    public function return_video($title): void
     {
         $movieFound = false;
         /** @var Video $movie
@@ -186,7 +186,7 @@ class VideoStore
         }
     }
 
-    public function list_inventory()
+    public function list_inventory(): void
     {
         if (empty($this->movies)) {
             echo "Inventory is empty.\n";
@@ -202,7 +202,7 @@ class VideoStore
     }
 
 
-    public function rateTheMovie($title, $rate)
+    public function rateTheMovie($title, $rate): void
     {
         /** @var Video $movie
          */
@@ -227,9 +227,8 @@ class Video
         $this->title = $title;
         $this->isRented = ($isRented == "true");
         $this->name = $name;
-        $this->rating = (array)$rating; // Cast $rating to an integer
+        $this->rating = (array)$rating;
     }
-
 
     public function getTitle(): string
     {
@@ -246,29 +245,38 @@ class Video
         return $this->name;
     }
 
-    public function rent()
+    public function rent(): void
     {
         $this->isRented = true;
     }
 
-    public function returnVideo()
+    public function returnVideo(): void
     {
         $this->isRented = false;
     }
-    public function setRating($rating)
+
+    public function setRating($rating): void
     {
-        $this->rating[] = $rating;
+        $this->rating[$this->title][] = $rating;
     }
 
     public function getRating(): float
     {
+        if (isset($this->rating[$this->title])) {
+            $sum = array_sum($this->rating[$this->title]);
+            $count = count($this->rating[$this->title]);
 
-        $sum = array_sum($this->rating);
-        $average = $sum / count($this->rating);
-
-        return $average;
-
+            if ($count === 0) {
+                return 0; // Avoid division by zero if there are no ratings.
+            }
+            $average = $sum / $count;
+            return $average;
+            
+        } else {
+            return 0; // Default rating if title is not found.
+        }
     }
+
 }
 
 $app = new Application();
