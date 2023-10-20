@@ -1,0 +1,18 @@
+{
+    "name": "artursansons/university",
+    "autoload": {
+        "psr-4": {
+            "University\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ansonsarturs",
+            "email": "ansonsarturs@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/psr7": "^2.6",
+        "guzzlehttp/guzzle": "^7.8"
+    }
+}

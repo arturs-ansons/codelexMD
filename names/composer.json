@@ -1,0 +1,18 @@
+{
+    "name": "artursansons/names",
+    "autoload": {
+        "psr-4": {
+            "Names\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ansonsarturs",
+            "email": "ansonsarturs@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.8",
+        "fakerphp/faker": "^1.23"
+    }
+}

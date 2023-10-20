@@ -1,0 +1,15 @@
+{
+    "name": "artursansons/coin",
+    "autoload": {
+        "psr-4": {
+            "Artursansons\\Coin\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ansonsarturs",
+            "email": "ansonsarturs@gmail.com"
+        }
+    ],
+    "require": {}
+}
