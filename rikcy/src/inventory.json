@@ -1,0 +1,124 @@
+{
+    "video": [
+        {
+            "title": "S01E01",
+            "isRented": false,
+            "name": "Pilot",
+            "rating": 0
+        },
+        {
+            "title": "S01E02",
+            "isRented": false,
+            "name": "Lawnmower Dog",
+            "rating": 0
+        },
+        {
+            "title": "S01E03",
+            "isRented": false,
+            "name": "Anatomy Park",
+            "rating": 0
+        },
+        {
+            "title": "S01E04",
+            "isRented": false,
+            "name": "M. Night Shaym-Aliens!",
+            "rating": 0
+        },
+        {
+            "title": "S01E05",
+            "isRented": false,
+            "name": "Meeseeks and Destroy",
+            "rating": 0
+        },
+        {
+            "title": "S01E06",
+            "isRented": false,
+            "name": "Rick Potion #9",
+            "rating": 0
+        },
+        {
+            "title": "S01E07",
+            "isRented": false,
+            "name": "Raising Gazorpazorp",
+            "rating": 0
+        },
+        {
+            "title": "S01E08",
+            "isRented": false,
+            "name": "Rixty Minutes",
+            "rating": 0
+        },
+        {
+            "title": "S01E09",
+            "isRented": false,
+            "name": "Something Ricked This Way Comes",
+            "rating": 0
+        },
+        {
+            "title": "S01E10",
+            "isRented": false,
+            "name": "Close Rick-counters of the Rick Kind",
+            "rating": 0
+        },
+        {
+            "title": "S01E11",
+            "isRented": false,
+            "name": "Ricksy Business",
+            "rating": 0
+        },
+        {
+            "title": "S02E01",
+            "isRented": false,
+            "name": "A Rickle in Time",
+            "rating": 0
+        },
+        {
+            "title": "S02E02",
+            "isRented": false,
+            "name": "Mortynight Run",
+            "rating": 0
+        },
+        {
+            "title": "S02E03",
+            "isRented": false,
+            "name": "Auto Erotic Assimilation",
+            "rating": 0
+        },
+        {
+            "title": "S02E04",
+            "isRented": false,
+            "name": "Total Rickall",
+            "rating": 0
+        },
+        {
+            "title": "S02E05",
+            "isRented": false,
+            "name": "Get Schwifty",
+            "rating": 0
+        },
+        {
+            "title": "S02E06",
+            "isRented": false,
+            "name": "The Ricks Must Be Crazy",
+            "rating": 0
+        },
+        {
+            "title": "S02E07",
+            "isRented": false,
+            "name": "Big Trouble in Little Sanchez",
+            "rating": 0
+        },
+        {
+            "title": "S02E08",
+            "isRented": false,
+            "name": "Interdimensional Cable 2: Tempting Fate",
+            "rating": 5
+        },
+        {
+            "title": "S02E09",
+            "isRented": false,
+            "name": "Look Who's Purging Now",
+            "rating": 0
+        }
+    ]
+}
