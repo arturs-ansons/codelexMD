@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/coin/src" isTestSource="false" packagePrefix="Coin\" />
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/coin/vendor/symfony/deprecation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/coin/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/coin/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/coin/vendor/symfony/polyfill-php80" />
+      <excludeFolder url="file://$MODULE_DIR$/coin/vendor/nesbot/carbon" />
+      <excludeFolder url="file://$MODULE_DIR$/coin/vendor/symfony/translation" />
+      <excludeFolder url="file://$MODULE_DIR$/coin/vendor/symfony/translation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/coin/vendor/psr/clock" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

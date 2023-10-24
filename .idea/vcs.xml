@@ -2,5 +2,9 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/coin" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/names" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/rikcy/src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/university" vcs="Git" />
   </component>
 </project>

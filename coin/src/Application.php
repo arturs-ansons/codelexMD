@@ -1,5 +1,5 @@
 <?php
-namespace coin;
+namespace Coin;
 class Application
 {
     public function run(): void
@@ -12,7 +12,7 @@ class Application
         // Define the API URL as a string
         $apiUrl = 'https://api.coindesk.com/v1/bpi/currentprice.json';
 
-        try {
+
             // Retrieve the API data
             $apiData = $apiDataRetriever->retrieveApiData($apiUrl);
 
@@ -24,16 +24,16 @@ class Application
 
             // Use the currencies as needed
             foreach ($currencies as $currency) {
-                echo "Currency Code: " . $currency->getCode() . "\n";
-                echo "Currency Symbol: " . $currency->getSymbol() . "\n";
-                // ...other properties...
+                /** @var Currency $currency
+                 */
+                echo "Code: " . $currency->getCode() . "\n";
+                echo "Symbol: " . $currency->getSymbol() . "\n";
+                echo "Rate: " . $currency->getRate() . "\n";
+                echo "Description: " . $currency->getDescription() . "\n";
+                echo "Date: " . $currency->getCurrentDateTime() . "\n";
                 echo "------------------------\n";
             }
-        } catch (ApiException $e) {
-
-            echo "An error occurred while retrieving API data: " . $e->getMessage();
-        }
-    }
+       }
 }
 
 

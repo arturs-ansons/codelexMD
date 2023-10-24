@@ -1,9 +1,19 @@
-<?php
+<?php declare(strict_types=1);
 
 class Application
 {
-    function run()
+
+    private array $movies;
+
+    public function __construct()
     {
+        $this->movies = [];
+    }
+
+    public function run()
+    {
+        $videoStore = new VideoStore();
+
         while (true) {
             echo "Choose the operation you want to perform \n";
             echo "Choose 0 for EXIT\n";
@@ -19,52 +29,125 @@ class Application
                     echo "Bye!";
                     die;
                 case 1:
-                    $this->add_movies();
+                    echo "Enter title: ";
+                    $title = readline();
+                    echo "Enter rating: ";
+                    $rating = readline();
+                    $videoStore->add_movies($title, $rating);
                     break;
                 case 2:
-                    $this->rent_video();
+                    echo "Enter title to rent: ";
+                    $title = readline();
+                    $videoStore->rent_video($title); // Call rent_video on $videoStore
                     break;
                 case 3:
-                    $this->return_video();
+                    echo "Enter title to return: ";
+                    $title = readline();
+                    $videoStore->return_video($title); // Call return_video on $videoStore
                     break;
                 case 4:
-                    $this->list_inventory();
+                    $videoStore->list_inventory();
                     break;
                 default:
                     echo "Sorry, I don't understand you..";
             }
         }
     }
-
-    private function add_movies()
-    {
-        //todo
-    }
-
-    private function rent_video()
-    {
-        //todo
-    }
-
-    private function return_video()
-    {
-        //todo
-    }
-
-    private function list_inventory()
-    {
-        //todo
-    }
 }
-
 class VideoStore
 {
+    private array $movies = [];
 
+    public function add_movies($title, $rating)
+    {
+        $this->movies[] = new Video($title, $rating);
+    }
+
+    public function rent_video($title): void
+    {
+        /** @var Video $movie
+         */
+        foreach ($this->movies as $movie) {
+            if ($movie->getTitle() === $title) {
+                if (!$movie->isRented()) {
+                    $movie->rent();
+                    echo "You rented '{$movie->getTitle()}' successfully.\n";
+                } else {
+                    echo "Sorry, '{$movie->getTitle()}' is already rented.\n";
+                }
+                echo "Sorry, '{$title}' not found in the inventory.\n";
+            }
+        }
+
+    }
+
+    public function return_video($title):void
+    {
+        /** @var Video $movie
+         */
+        foreach ($this->movies as $movie) {
+            if ($movie->getTitle() === $title) {
+                if ($movie->isRented()) {
+                    $movie->returnVideo();
+                    echo "You returned '{$movie->getTitle()}' successfully.\n";
+                } else {
+                    echo "Sorry, '{$movie->getTitle()}' was not rented.\n";
+                }
+                echo "Sorry, '{$title}' not found in the inventory.\n";
+            }
+        }
+
+    }
+
+    public function list_inventory():void
+    {
+        /** @var Video $movie
+         */
+        foreach ($this->movies as $movie) {
+            $status = $movie->isRented() ? "Rented" : "Available";
+            echo "Title: {$movie->getTitle()}, Rating: {$movie->getRating()}, Status: $status\n";
+        }
+    }
 }
+
 
 class Video
 {
+    private string $title;
+    private bool $isRented;
+    private string $rating;
 
+    public function __construct($title, $rating)
+    {
+        $this->title = $title;
+        $this->isRented = false;
+        $this->rating = $rating;
+    }
+
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    public function isRented(): bool
+    {
+        return $this->isRented;
+    }
+
+    public function getRating(): string
+    {
+        return $this->rating;
+    }
+
+    public function rent()
+    {
+        $this->isRented = true;
+    }
+
+    public function returnVideo()
+    {
+        $this->isRented = false;
+    }
 }
 
 $app = new Application();

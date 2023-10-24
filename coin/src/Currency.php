@@ -1,5 +1,6 @@
 <?php
-namespace coin;
+namespace Coin;
+use Carbon\Carbon;
 class Currency {
 
     private string $code;
@@ -15,7 +16,9 @@ class Currency {
         $this->description = $description;
         $this->rateFloat = $rateFloat;
     }
-
+    function getCurrentDateTime() {
+        return Carbon::now();
+    }
     public function getCode(): string {
         return $this->code;
     }
@@ -32,7 +35,4 @@ class Currency {
         return $this->description;
     }
 
-    public function getRateFloat(): float {
-        return $this->rateFloat;
-    }
 }

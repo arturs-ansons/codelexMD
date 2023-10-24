@@ -1,5 +1,5 @@
 <?php
-namespace coin;
+namespace Coin;
 class CurrencyCollection
 {
     private array $currencies = [];
@@ -11,22 +11,10 @@ class CurrencyCollection
             $this->addCurrencies($currency);
         }
     }
-
-    /**
-     * Add a company to the collection.
-     *
-     * @param Currency $currency
-     */
     public function addCurrency(Currency $currency): void
     {
         $this->currencies[] = $currency;
     }
-
-    /**
-     * Get all the companies in the collection.
-     *
-     * @return array
-     */
     public function getCurrencies(): array
     {
         return $this->currencies;

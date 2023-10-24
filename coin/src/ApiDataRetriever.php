@@ -1,5 +1,5 @@
 <?php
-namespace coin;
+namespace Coin;
 class ApiDataRetriever
 {
     public function retrieveApiData(string $apiUrl): string

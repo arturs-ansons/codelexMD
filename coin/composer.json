@@ -2,7 +2,7 @@
     "name": "artursansons/coin",
     "autoload": {
         "psr-4": {
-            "Artursansons\\Coin\\": "src/"
+            "Coin\\": "src/"
         }
     },
     "authors": [
@@ -11,5 +11,7 @@
             "email": "ansonsarturs@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "nesbot/carbon": "^2.71"
+    }
 }

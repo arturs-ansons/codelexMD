@@ -1,5 +1,5 @@
 <?php
-namespace coin;
+namespace Coin;
 class ApiDataProcessor
 {
     private CurrencyCollection $currencyCollection;
