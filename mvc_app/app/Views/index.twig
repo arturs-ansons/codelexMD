@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rick and Morty Episodes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #0088cc;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #0088cc;
+            color: #fff;
+        }
+
+        ul {
+            list-style: none; /* Remove list bullets */
+        }
+
+        li {
+            margin-bottom: 20px; /* Add some margin between list items */
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ccc; /* Add a horizontal line */
+            margin: 20px 0; /* Adjust the margin around the line */
+        }
+    </style>
+</head>
+<body>
+<h1>Rick and Morty Episodes</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Episode</th>
+        <th>Air Date</th>
+    </tr>
+    {% if episode is defined %}
+        <tr>
+            <td>{{ episode.id }}</td>
+            <td>{{ episode.name }}</td>
+            <td>{{ episode.episode }}</td>
+            <td>{{ episode.air_date }}</td>
+        </tr>
+    {% else %}
+        {% for singleEpisode in episodes %}
+            <tr>
+                <td>{{ singleEpisode.id }}</td>
+                <td>{{ singleEpisode.name }}</td>
+                <td>{{ singleEpisode.episode }}</td>
+                <td>{{ singleEpisode.air_date }}</td>
+            </tr>
+        {% endfor %}
+    {% endif %}
+</table>
+</body>
+</html>
